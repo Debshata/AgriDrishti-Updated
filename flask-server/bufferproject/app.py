@@ -55,10 +55,8 @@ def predict_prices(crop_type, month, year, price_change=0):
     # Apply scenario changes
     predicted_prices += predicted_prices * price_change
     
-    # Calculate average predicted price
     avg_price = predicted_prices.mean()
     
-    # Combine future_dates and predicted_prices into a list of dictionaries
     future_data = [{'date': date.strftime('%Y-%m-%d'), 'price': price} for date, price in zip(future_dates, predicted_prices)]
     
     return crop_data['date'], crop_data['price'], future_data, avg_price
@@ -66,14 +64,12 @@ def predict_prices(crop_type, month, year, price_change=0):
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Parse incoming data
         data = request.get_json()
         crop_type = data.get('crop_type')
         month_year = data.get('month_year')
         threshold_limit = float(data.get('threshold', 0))
         scenario = data.get('scenario', 'none')
 
-        # Split the month and year from the month-year input
         year, month = map(int, month_year.split('-'))
 
         price_change = 0
@@ -110,4 +106,4 @@ def predict():
         return jsonify({'message': 'An error occurred: {}'.format(str(e))}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=500)
+    app.run(debug=True, port=5001)

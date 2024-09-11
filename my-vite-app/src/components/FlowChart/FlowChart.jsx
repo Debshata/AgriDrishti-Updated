@@ -1,5 +1,5 @@
 import React from 'react';
-import FlowchartImg from '../../assets/images/background/flowChart.jpeg'
+import FlowchartImg from '../../assets/images/background/flowChart.jpg'
 import './FlowChart.css'
 const Flowchart = () => {
     return (

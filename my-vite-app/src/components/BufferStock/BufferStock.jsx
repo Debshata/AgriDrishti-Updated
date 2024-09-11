@@ -74,7 +74,7 @@ const BufferStock = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5001/predict', {
+            const response = await axios.post('https://localhost:5001/predict', {
                 crop_type: formData.crop.label,
                 month_year: formData.monthYear,
                 threshold: formData.threshold,
